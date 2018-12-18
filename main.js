@@ -44,12 +44,21 @@ document.querySelector("#calculate-items-btn").addEventListener('click', functio
 
 document.querySelector("#select-to-show-more-btn").addEventListener('click', function(){
   // TASK #4
-    var options = document.querySelector(".selection")
-    var index = options.selectedIndex;
-    var model = options.value;
-    
-    for (i = 0; i < options.length; i++);
-    console.log(options[i]);
+  var options = document.querySelectorAll("option");
+  var selection = document.querySelector(".selection");
+  var imgBox = document.querySelector(".img-box");
+  var model = document.querySelector(".model");
+  var msrp = document.querySelector(".msrp");
+  var mpg = document.querySelector(".mpg");
+  var edmunds = document.querySelector(".edmunds");
 
-
-})
+  options.forEach(function(option){
+    if(selection.selectedIndex === option.index){
+      imgBox.innerHTML = "<img src='images/" + option.dataset.img + "'></img>";
+      model.textContent = option.value;
+      msrp.textContent = option.dataset.msrp;
+      mpg.textContent = option.dataset.mpg;
+      edmunds.textContent = option.dataset.edmunds;
+    }
+  });
+});
